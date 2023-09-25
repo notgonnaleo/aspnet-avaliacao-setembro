@@ -1,0 +1,43 @@
+﻿@using Domain.ViewModels.Clientes;
+@model ClienteViewModel
+
+@{
+    <form class="form-control" method="post" action="@Url.Action("AdicionarCliente")">
+        <fieldset>
+            <legend>Adicionar Cliente:</legend>
+            <div>
+                <label for="NomeCliente">Nome do Cliente:</label>
+                <input class="form-control" type="text" name="NomeCliente" value="" />
+            </div>
+            <div>
+                <label for="IdVendedor">Nome do Vendedor:</label>
+                <select class="form-control" name="IdVendedor">
+                    <option value="">Selecione um Vendedor</option>
+                    @{
+                        if (Model.DropdownVendedores.Any())
+                        {
+                            foreach (var vendedor in Model.DropdownVendedores)
+                            {
+                                <option value="@vendedor.IdVendedor">@vendedor.NomeVendedor</option>
+                            }
+                        }
+                        else
+                        {
+                            <option value="">...</option>
+                        }
+                    }
+                </select>
+            </div>
+            <div>
+                <label for="CPF">CPF:</label>
+                <input class="form-control" type="text" name="CPF" value="" />
+            </div>
+            <br />
+            <div>
+                <label>&nbsp;</label>
+                <input class="btn-primary submit rounded" type="submit" value="Submit" />
+            </div>
+            <br />
+        </fieldset>
+    </form>
+}

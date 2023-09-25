@@ -42,8 +42,8 @@ namespace WebApp.Controllers
         }
 
         [HttpPost]
-        [Route("Adicionar")]
-        public async Task<IActionResult> Adicionar(Vendedor vendedor)
+        [Route("AdicionarVendedor")]
+        public async Task<IActionResult> AdicionarVendedor(Vendedor vendedor)
         {
             List<Vendedor> list = _appDbContext.Vendedores.ToList();
             if (list.Any())
@@ -64,8 +64,8 @@ namespace WebApp.Controllers
         }
 
         [HttpPost]
-        [Route("Atualizar")]
-        public async Task<IActionResult> Atualizar(Vendedor vendedor)
+        [Route("AtualizarVendedor")]
+        public async Task<IActionResult> AtualizarVendedor(Vendedor vendedor)
         {
             _appDbContext.Vendedores.Update(vendedor);
             _appDbContext.SaveChanges();
@@ -73,8 +73,8 @@ namespace WebApp.Controllers
         }
 
         [HttpGet]
-        [Route("Selecionar")]
-        public IActionResult Selecionar(int IdVendedor)
+        [Route("SelecionarVendedor")]
+        public IActionResult SelecionarVendedor(int IdVendedor)
         {
             var vendedor = _appDbContext.Vendedores.Where(x => x.IdVendedor == IdVendedor).First();
 
@@ -90,11 +90,6 @@ namespace WebApp.Controllers
             // e sim ta uma merda
 
             return View("Index", result); 
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
         }
     }
 }

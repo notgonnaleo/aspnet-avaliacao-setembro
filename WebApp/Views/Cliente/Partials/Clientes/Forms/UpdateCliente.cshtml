@@ -1,0 +1,60 @@
+﻿@using Domain.ViewModels.Clientes;
+@model ClienteViewModel
+
+@{
+    <form class="form-control" method="post" action="@Url.Action("AtualizarCliente")">
+        <fieldset>
+            <legend>Atualizar Vendedor</legend>
+            <input class="form-control" type="hidden" name="IdCliente" value="@Model.ClienteIndividual.IdCliente" />
+            <div>
+                <label for="NomeCliente">NomeCliente:</label>
+                <input class="form-control" type="text" name="NomeCliente" value="@Model.ClienteIndividual.NomeCliente" />
+            </div>
+            <div>
+                <label for="IdVendedor">Nome do Vendedor:</label>
+                <select class="form-control" name="IdVendedor">
+                    @{
+                        if(Model.VendedorSelecionado != null)
+                        {
+                            <option value="@Model.VendedorSelecionado.IdVendedor">@Model.VendedorSelecionado.NomeVendedor</option>
+                        }
+                        else
+                        {
+                            <option value="">Selecione um vendedor...</option>
+                        }
+
+                        if (!(Model.DropdownVendedores == null))
+                        {
+                            foreach (var vendedor in Model.DropdownVendedores)
+                            {
+                                <option value="@vendedor.IdVendedor">@vendedor.NomeVendedor</option>
+                            }
+                        }
+                        else
+                        {
+                            <option value="">...</option>
+                        }
+
+                    }
+                </select>
+            </div>
+            <div>
+                <label for="CPF">CPF:</label>
+                <input class="form-control" type="text" name="CPF" value="@Model.ClienteIndividual.CPF" />
+            </div>
+            <div>
+                <label for="Ativo" class="toggle-label">Ativo</label>
+                <div class="toggle-switch">
+                    <input type="checkbox" id="Ativo" name="Ativo"
+                    @(Model.ClienteIndividual.Ativo ? "checked" : "") />
+                </div>
+            </div>
+            <br />
+            <div>
+                <label>&nbsp;</label>
+                <input class="btn-primary submit rounded" type="submit" value="Submit" />
+            </div>
+            <br />
+        </fieldset>
+    </form>
+ }

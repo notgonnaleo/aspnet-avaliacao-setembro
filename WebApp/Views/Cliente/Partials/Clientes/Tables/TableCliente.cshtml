@@ -1,0 +1,41 @@
+﻿@using Domain.ViewModels.Clientes;
+@model ClienteViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+<div class="text-center">
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ClienteIndividual.NomeCliente)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ClienteIndividual.IdVendedor)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ClienteIndividual.CPF)
+                    </th>
+                    <th>
+                        Ações
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var cliente in Model.Clientes)
+                {
+                    <tr>
+                        <td>@cliente.NomeCliente</td>
+                        <td>@cliente.IdVendedor</td>
+                        <td>@cliente.CPF</td>
+                        <td>
+                            <a href="@Url.Action("SelecionarCliente", new { IdCliente = cliente.IdCliente })">Atualizar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

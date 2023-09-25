@@ -1,0 +1,29 @@
+﻿@using Domain.Models.Clientes;
+@using Domain.ViewModels.Clientes;
+@model ClienteViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@{
+    if(Model.Clientes.Any())
+    {
+        <div>
+            @Html.Partial("~/Views/Cliente/Partials/Clientes/Tables/TableCliente.cshtml", model: Model)
+        </div>
+    }
+}
+
+<div>
+    @{
+        if(Model.ClienteIndividual.IdCliente != 0)
+        {
+            @Html.Partial("~/Views/Cliente/Partials/Clientes/Forms/UpdateCliente.cshtml", model: Model)
+        }
+        else
+        {
+            @Html.Partial("~/Views/Cliente/Partials/Clientes/Forms/CreateCliente.cshtml", model: Model)
+        }
+    }
+</div>
