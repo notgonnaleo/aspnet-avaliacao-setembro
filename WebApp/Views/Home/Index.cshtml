@@ -1,0 +1,29 @@
+﻿@using Domain.Models.Vendedores;
+@using Domain.ViewModels.Vendedores;
+@model VendedorViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@{
+    if(Model.Vendedores.Any())
+    {
+        <div>
+            @Html.Partial("~/Views/Home/Partials/Vendedores/Tables/TableVendedor.cshtml", model: Model)
+        </div>
+    }
+}
+
+<div>
+    @{
+        if(Model.VendedorIndividual.IdVendedor != 0)
+        {
+            @Html.Partial("~/Views/Home/Partials/Vendedores/Forms/UpdateVendedor.cshtml", model: Model)
+        }
+        else
+        {
+            @Html.Partial("~/Views/Home/Partials/Vendedores/Forms/CreateVendedor.cshtml", model: Model)
+        }
+    }
+</div>

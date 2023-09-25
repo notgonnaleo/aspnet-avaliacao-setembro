@@ -1,0 +1,36 @@
+﻿@using Domain.ViewModels.Vendedores
+@model VendedorViewModel
+
+@{
+    <form class="form-control" method="post" action="@Url.Action("Atualizar")">
+        <fieldset>
+            <legend>Atualizar Vendedor</legend>
+            <div>
+                <label for="Login">Login:</label>
+                <input class="form-control" type="text" name="Login" value="@Model.VendedorIndividual.Login" />
+            </div>
+            <div>
+                <label for="NomeVendedor">Nome do Vendedor:</label>
+                <input class="form-control" type="text" name="NomeVendedor" value="@Model.VendedorIndividual.NomeVendedor" />
+            </div>
+            <div>
+                <label for="Senha">Senha:</label>
+                <input class="form-control" type="text" name="Senha" value="@Model.VendedorIndividual.Senha" />
+            </div>
+            <div>
+                <label for="Senha">Ativo:</label>
+                <input class="form-control" type="number" name="Senha" value="@Model.VendedorIndividual.Ativo" />
+                <p>Coloca 1 pra ativar 2 pra desligar</p>
+                <p>Nao eu nao vou fazer validacao pra se o cara colocar seila o numero 8 aqui</p>
+                <p>E eu tambem nao to com pique pra fazer mais uma rota so pra delete aqui msm ja serve</p>
+            </div>
+                <input class="form-control" type="hidden" name="Senha" value="@Model.VendedorIndividual.IdVendedor" />
+            <br />
+            <div>
+                <label>&nbsp;</label>
+                <input class="btn-primary submit rounded" type="submit" value="Submit" />
+            </div>
+            <br />
+        </fieldset>
+    </form>
+ }

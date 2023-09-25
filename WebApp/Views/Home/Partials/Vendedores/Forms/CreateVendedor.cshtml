@@ -1,0 +1,28 @@
+﻿@using Domain.ViewModels.Vendedores
+@model VendedorViewModel
+
+@{
+    <form class="form-control" method="post" action="@Url.Action("Adicionar")">
+        <fieldset>
+            <legend>Adicionar Vendedor</legend>
+            <div>
+                <label for="Login">Login:</label>
+                <input class="form-control" type="text" name="Login" value="" />
+            </div>
+            <div>
+                <label for="NomeVendedor">Nome do Vendedor:</label>
+                <input class="form-control" type="text" name="NomeVendedor" value="" />
+            </div>
+            <div>
+                <label for="Senha">Senha:</label>
+                <input class="form-control" type="text" name="Senha" value="" />
+            </div>
+            <br />
+            <div>
+                <label>&nbsp;</label>
+                <input class="btn-primary submit rounded" type="submit" value="Submit" />
+            </div>
+            <br />
+        </fieldset>
+    </form>
+}
