@@ -1,0 +1,33 @@
+﻿@using Domain.ViewModels.Marcas;
+@model MarcaViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+<div class="text-center">
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MarcaIndividual.NomeMarca)
+                    </th>
+                    <th>
+                        Ações
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var marca in Model.Marcas)
+                {
+                    <tr>
+                        <td>@marca.NomeMarca</td>
+                        <td>
+                            <a href="@Url.Action("SelecionarMarca", new { IdMarca = marca.IdMarca })">Atualizar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,104 @@
+﻿@using Domain.ViewModels.Pedidos;
+@model PedidoViewModel
+
+@{
+    <form class="form-control" method="post" action="@Url.Action("AtualizarProduto")">
+        <fieldset>
+            <legend>Atualizar Pedido:</legend>
+            <div>
+                <label for="IdVendedor">Nome do Vendedor:</label>
+                <select class="form-control" name="IdVendedor">
+                    @{
+                        if (Model.VendedorSelecionado != null)
+                        {
+                            <option value="@Model.VendedorSelecionado.IdVendedor">@Model.VendedorSelecionado.NomeVendedor</option>
+                        }
+                        else
+                        {
+                            <option value="">Selecione um vendedor...</option>
+                        }
+
+                        if (!(Model.DropdownVendedores == null))
+                        {
+                            foreach (var vendedor in Model.DropdownVendedores)
+                            {
+                                <option value="@vendedor.IdVendedor">@vendedor.NomeVendedor</option>
+                            }
+                        }
+                        else
+                        {
+                            <option value="">...</option>
+                        }
+
+                    }
+                </select>
+            </div>
+            <div>
+                <label for="IdCliente">Nome do Cliente:</label>
+                <select class="form-control" name="IdCliente">
+                    @{
+                        if (Model.ClienteSelecionado != null)
+                        {
+                            <option value="@Model.ClienteSelecionado.IdCliente">@Model.ClienteSelecionado.NomeCliente</option>
+                        }
+                        else
+                        {
+                            <option value="">Selecione um Cliente...</option>
+                        }
+
+                        if (!(Model.DropdownVendedores == null))
+                        {
+                            foreach (var vendedor in Model.DropdownVendedores)
+                            {
+                                <option value="@vendedor.IdVendedor">@vendedor.NomeVendedor</option>
+                            }
+                        }
+                        else
+                        {
+                            <option value="">...</option>
+                        }
+
+                    }
+                </select>
+            </div>
+            <div>
+                <label for="IdProduto">Nome do Produto:</label>
+                <select class="form-control" name="IdProduto">
+                    @{
+                        if (Model.ProdutoSelecionado.IdProduto != null)
+                        {
+                            <option value="@Model.ProdutoSelecionado.IdProduto">@Model.ProdutoSelecionado.IdProduto</option>
+                        }
+                        else
+                        {
+                            <option value="">Selecione um Produto...</option>
+                        }
+
+                        if (!(Model.DropdownProdutos == null))
+                        {
+                            foreach (var produto in Model.DropdownProdutos)
+                            {
+                                <option value="@produto.IdProduto">@produto.NomeProduto</option>
+                            }
+                        }
+                        else
+                        {
+                            <option value="">...</option>
+                        }
+
+                    }
+                </select>
+            </div>
+            <div>
+                <label for="QtdeProduto">Qtde Itens:</label>
+                <input class="form-control" type="number" name="QtdeProduto" value="@Model.PedidoIndividual.QtdeProduto" />
+            </div>
+            <br />
+            <div>
+                <label>&nbsp;</label>
+                <input class="btn-primary submit rounded" type="submit" value="Submit" />
+            </div>
+            <br />
+        </fieldset>
+    </form>
+ }

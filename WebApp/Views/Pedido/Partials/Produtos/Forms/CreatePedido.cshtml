@@ -1,0 +1,75 @@
+﻿@using Domain.ViewModels.Pedidos;
+@model PedidoViewModel
+
+@{
+    <form class="form-control" method="post" action="@Url.Action("AdicionarProduto")">
+        <fieldset>
+            <legend>Adicionar Pedido:</legend>
+            <div>
+                <label for="IdVendedor">Nome do Vendedor:</label>
+                <select class="form-control" name="IdVendedor">
+                    @{
+                        if (Model.DropdownVendedores.Any())
+                        {
+                            foreach (var vendedor in Model.DropdownVendedores)
+                            {
+                                <option value="@vendedor.IdVendedor">@vendedor.NomeVendedor</option>
+                            }
+                        }
+                        else
+                        {
+                            <option value="">...</option>
+                        }
+
+                    }
+                </select>
+            </div>
+            <div>
+                <label for="IdCliente">Nome do Cliente:</label>
+                <select class="form-control" name="IdCliente">
+                    @{
+                        if (Model.DropdownVendedores.Any())
+                        {
+                            foreach (var vendedor in Model.DropdownVendedores)
+                            {
+                                <option value="@vendedor.IdVendedor">@vendedor.NomeVendedor</option>
+                            }
+                        }
+                        else
+                        {
+                            <option value="">...</option>
+                        }
+                    }
+                </select>
+            </div>
+            <div>
+                <label for="IdProduto">Nome do Produto:</label>
+                <select class="form-control" name="IdProduto">
+                    @{
+                        if (Model.DropdownVendedores.Any())
+                        {
+                            foreach (var vendedor in Model.DropdownVendedores)
+                            {
+                                <option value="@vendedor.IdVendedor">@vendedor.NomeVendedor</option>
+                            }
+                        }
+                        else
+                        {
+                            <option value="">...</option>
+                        }
+                    }
+                </select>
+            </div>
+            <div>
+                <label for="QtdeProduto">Qtde Itens:</label>
+                <input class="form-control" type="number" name="QtdeProduto" value="" />
+            </div>
+            <br />
+            <div>
+                <label>&nbsp;</label>
+                <input class="btn-primary submit rounded" type="submit" value="Submit" />
+            </div>
+            <br />
+        </fieldset>
+    </form>
+}

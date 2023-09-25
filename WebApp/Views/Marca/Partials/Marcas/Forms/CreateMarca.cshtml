@@ -1,0 +1,21 @@
+﻿@using Domain.ViewModels.Marcas
+@model MarcaViewModel
+
+@{
+    <form class="form-control" method="post" action="@Url.Action("AdicionarMarca")">
+        <fieldset>
+            <legend>Atualizar marca</legend>
+            <input class="form-control" type="hidden" name="IdMarca" value="" />
+            <div>
+                <label for="Login">Nome da Marca:</label>
+                <input class="form-control" type="text" name="NomeMarca" value="" />
+            </div>
+            <br />
+            <div>
+                <label>&nbsp;</label>
+                <input class="btn-primary submit rounded" type="submit" value="Submit" />
+            </div>
+            <br />
+        </fieldset>
+    </form>
+}

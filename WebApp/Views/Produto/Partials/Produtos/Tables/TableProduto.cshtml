@@ -1,0 +1,45 @@
+﻿@using Domain.ViewModels.Produtos;
+@model ProdutoViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+<div class="text-center">
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ProdutoIndividual.NomeProduto)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ProdutoIndividual.IdVendedor)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ProdutoIndividual.IdMarca)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ProdutoIndividual.Preco)
+                    </th>
+                    <th>
+                        Ações
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var produto in Model.Produtos)
+                {
+                    <tr>
+                        <td>@produto.NomeProduto</td>
+                        <td>@produto.IdVendedor</td>
+                        <td>@produto.IdMarca</td>
+                        <td>@produto.Preco</td>
+                        <td>
+                            <a href="@Url.Action("SelecionarProduto", new { IdProduto = produto.IdProduto })">Atualizar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

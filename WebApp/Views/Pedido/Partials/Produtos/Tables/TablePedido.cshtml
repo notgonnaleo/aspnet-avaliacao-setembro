@@ -1,0 +1,49 @@
+﻿@using Domain.ViewModels.Pedidos;
+@model PedidoViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+<div class="text-center">
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PedidoIndividual.IdPedido)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PedidoIndividual.IdVendedor)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PedidoIndividual.IdProduto)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PedidoIndividual.IdCliente)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PedidoIndividual.ValorTotal)
+                    </th>
+                    <th>
+                        Ações
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var pedido in Model.Pedidos)
+                {
+                    <tr>
+                        <td>@pedido.IdPedido</td>
+                        <td>@pedido.IdVendedor</td>
+                        <td>@pedido.IdProduto</td>
+                        <td>@pedido.IdCliente</td>
+                        <td>@pedido.ValorTotal</td>
+                        <td>
+                            <a href="@Url.Action("SelecionarPedido", new { IdPedido = pedido.IdPedido })">Atualizar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

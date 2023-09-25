@@ -1,0 +1,87 @@
+﻿@using Domain.ViewModels.Produtos;
+@model ProdutoViewModel
+
+@{
+    <form class="form-control" method="post" action="@Url.Action("AtualizarProduto")">
+        <fieldset>
+            <legend>Adicionar Produto:</legend>
+            <div>
+                <label for="NomeProduto">Nome do Produto:</label>
+                <input class="form-control" type="text" name="NomeProduto" value="@Model.ProdutoIndividual.NomeProduto" />
+            </div>
+            <div>
+                <label for="IdVendedor">Nome do Vendedor:</label>
+                <select class="form-control" name="IdVendedor">
+                    @{
+                        if (Model.VendedorSelecionado != null)
+                        {
+                            <option value="@Model.VendedorSelecionado.IdVendedor">@Model.VendedorSelecionado.NomeVendedor</option>
+                        }
+                        else
+                        {
+                            <option value="">Selecione um vendedor...</option>
+                        }
+
+                        if (!(Model.DropdownVendedores == null))
+                        {
+                            foreach (var vendedor in Model.DropdownVendedores)
+                            {
+                                <option value="@vendedor.IdVendedor">@vendedor.NomeVendedor</option>
+                            }
+                        }
+                        else
+                        {
+                            <option value="">...</option>
+                        }
+
+                    }
+                </select>
+            </div>
+            <div>
+                <label for="IdMarca">Nome da Marca:</label>
+                <select class="form-control" name="IdVendedor">
+                    @{
+                        if (Model.MarcaSelecionado != null)
+                        {
+                            <option value="@Model.MarcaSelecionado.IdMarca">@Model.MarcaSelecionado.NomeMarca</option>
+                        }
+                        else
+                        {
+                            <option value="">Selecione uma Marca...</option>
+                        }
+
+                        if (!(Model.DropdownMarcas == null))
+                        {
+                            foreach (var marca in Model.DropdownMarcas)
+                            {
+                                <option value="@marca.IdMarca">@marca.IdMarca</option>
+                            }
+                        }
+                        else
+                        {
+                            <option value="">...</option>
+                        }
+
+                    }
+                </select>
+            </div>
+            <div>
+                <label for="Preco">Preco:</label>
+                <input class="form-control" type="number" name="Preco" value="@Model.ProdutoIndividual.Preco" />
+            </div>
+            <div>
+                <label for="Ativo" class="toggle-label">Ativo</label>
+                <div class="toggle-switch">
+                    <input type="checkbox" id="Ativo" name="Ativo"
+                    @(Model.ProdutoIndividual.Ativo ? "checked" : "") />
+                </div>
+            </div>
+            <br />
+            <div>
+                <label>&nbsp;</label>
+                <input class="btn-primary submit rounded" type="submit" value="Submit" />
+            </div>
+            <br />
+        </fieldset>
+    </form>
+ }

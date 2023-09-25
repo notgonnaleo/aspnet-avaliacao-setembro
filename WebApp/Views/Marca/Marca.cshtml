@@ -1,0 +1,29 @@
+﻿@using Domain.Models.Marcas;
+@using Domain.ViewModels.Marcas;
+@model MarcaViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@{
+    if(Model.Marcas.Any())
+    {
+        <div>
+            @Html.Partial("~/Views/Marca/Partials/Marcas/Tables/TableMarca.cshtml", model: Model)
+        </div>
+    }
+}
+
+<div>
+    @{
+        if(Model.MarcaIndividual.IdMarca != 0)
+        {
+            @Html.Partial("~/Views/Marca/Partials/Marcas/Forms/UpdateMarca.cshtml", model: Model)
+        }
+        else
+        {
+            @Html.Partial("~/Views/Marca/Partials/Marcas/Forms/CreateMarca.cshtml", model: Model)
+        }
+    }
+</div>

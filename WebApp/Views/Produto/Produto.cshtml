@@ -1,0 +1,29 @@
+﻿@using Domain.Models.Produtos;
+@using Domain.ViewModels.Produtos;
+@model ProdutoViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@{
+    if(Model.Produtos.Any())
+    {
+        <div>
+            @Html.Partial("~/Views/Produto/Partials/Produtos/Tables/TableProduto.cshtml", model: Model)
+        </div>
+    }
+}
+
+<div>
+    @{
+        if(Model.ProdutoIndividual.IdProduto != 0)
+        {
+            @Html.Partial("~/Views/Produto/Partials/Produtos/Forms/UpdateProduto.cshtml", model: Model)
+        }
+        else
+        {
+            @Html.Partial("~/Views/Produto/Partials/Produtos/Forms/CreateProduto.cshtml", model: Model)
+        }
+    }
+</div>

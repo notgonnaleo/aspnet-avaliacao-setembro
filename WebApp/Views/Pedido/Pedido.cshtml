@@ -1,0 +1,29 @@
+﻿@using Domain.Models.Pedidos;
+@using Domain.ViewModels.Pedidos;
+@model PedidoViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@{
+    if(Model.Pedidos.Any())
+    {
+        <div>
+            @Html.Partial("~/Views/Pedido/Partials/Pedidos/Tables/TablePedido.cshtml", model: Model)
+        </div>
+    }
+}
+
+<div>
+    @{
+        if(Model.PedidoIndividual.IdPedido != 0)
+        {
+            @Html.Partial("~/Views/Pedido/Partials/Pedidos/Forms/UpdatePedido.cshtml", model: Model)
+        }
+        else
+        {
+            @Html.Partial("~/Views/Pedido/Partials/Pedidos/Forms/CreatePedido.cshtml", model: Model)
+        }
+    }
+</div>

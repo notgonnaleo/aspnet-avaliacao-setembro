@@ -1,0 +1,28 @@
+﻿@using Domain.ViewModels.Marcas
+@model MarcaViewModel
+
+@{
+    <form class="form-control" method="post" action="@Url.Action("AtualizarMarca")">
+        <fieldset>
+            <legend>Atualizar marca</legend>
+            <input class="form-control" type="hidden" name="IdMarca" value="@Model.MarcaIndividual.IdMarca" />
+            <div>
+                <label for="Login">Nome da Marca:</label>
+                <input class="form-control" type="text" name="NomeMarca" value="@Model.MarcaIndividual.NomeMarca" />
+            </div>
+            <div>
+                <label for="Ativo" class="toggle-label">Ativo</label>
+                <div class="toggle-switch">
+                    <input type="checkbox" id="Ativo" name="Ativo"
+                    @(Model.MarcaIndividual.Ativo ? "checked" : "") />
+                </div>
+            </div>
+            <br />
+            <div>
+                <label>&nbsp;</label>
+                <input class="btn-primary submit rounded" type="submit" value="Submit" />
+            </div>
+            <br />
+        </fieldset>
+    </form>
+ }
