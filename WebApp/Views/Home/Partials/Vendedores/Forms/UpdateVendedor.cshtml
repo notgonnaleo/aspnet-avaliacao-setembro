@@ -5,6 +5,7 @@
     <form class="form-control" method="post" action="@Url.Action("Atualizar")">
         <fieldset>
             <legend>Atualizar Vendedor</legend>
+            <input class="form-control" type="hidden" name="IdVendedor" value="@Model.VendedorIndividual.IdVendedor" />
             <div>
                 <label for="Login">Login:</label>
                 <input class="form-control" type="text" name="Login" value="@Model.VendedorIndividual.Login" />
@@ -18,11 +19,11 @@
                 <input class="form-control" type="text" name="Senha" value="@Model.VendedorIndividual.Senha" />
             </div>
             <div>
-                <label for="Senha">Ativo:</label>
-                <input class="form-control" type="number" name="Senha" value="@Model.VendedorIndividual.Ativo" />
-                <p>Coloca 1 pra ativar 2 pra desligar</p>
-                <p>Nao eu nao vou fazer validacao pra se o cara colocar seila o numero 8 aqui</p>
-                <p>E eu tambem nao to com pique pra fazer mais uma rota so pra delete aqui msm ja serve</p>
+                <label for="Ativo" class="toggle-label">Ativo</label>
+                <div class="toggle-switch">
+                    <input type="checkbox" id="Ativo" name="Ativo"
+                    @(Model.VendedorIndividual.Ativo ? "checked" : "") />
+                </div>
             </div>
                 <input class="form-control" type="hidden" name="Senha" value="@Model.VendedorIndividual.IdVendedor" />
             <br />

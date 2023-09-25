@@ -31,7 +31,7 @@ namespace Infrastructure.Contexts
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB; database=CrudVendasDB; Integrated Security=True;");
+            optionsBuilder.UseSqlServer("Server=DESKTOP-UJH1H7R; database=CrudVendasDB; Integrated Security=True; TrustServerCertificate=True");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

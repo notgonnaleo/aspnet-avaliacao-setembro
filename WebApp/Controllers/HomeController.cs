@@ -32,7 +32,7 @@ namespace WebApp.Controllers
 
         public async Task<VendedorViewModel> Listagem()
         {
-            var response = _appDbContext.Vendedores.ToList();
+            var response = _appDbContext.Vendedores.Where(x => x.Ativo == true).ToList();
             VendedorViewModel result = new VendedorViewModel()
             {
                 Vendedores = response.ToList(),
@@ -51,6 +51,11 @@ namespace WebApp.Controllers
                 vendedor.IdVendedor = list.Max(x => x.IdVendedor) + 1;
             }
 
+            if(vendedor.IdVendedor == 0)
+            {
+                vendedor.IdVendedor = 1; // i dont fuck with zeroes
+            }
+
             vendedor.Ativo = true;
             _appDbContext.Vendedores.Add(vendedor);
             _appDbContext.SaveChanges();
@@ -64,8 +69,6 @@ namespace WebApp.Controllers
         {
             _appDbContext.Vendedores.Update(vendedor);
             _appDbContext.SaveChanges();
-
-            var response = _appDbContext.Vendedores.ToList();
             return View("Index", await Listagem());
         }
 
